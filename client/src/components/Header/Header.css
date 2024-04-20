@@ -1,0 +1,151 @@
+.header {
+  background-color: #003b95;
+  display: flex;
+  justify-content: center;
+  padding: 50px 0px;
+  height: 45vh;
+  position: relative;
+}
+
+
+.headerContainer {
+  max-width: 1024px;
+  width: 100%;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+}
+
+.headerList {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 25px;
+  margin-bottom: 40px;
+}
+
+.headerListItem {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 7px 20px;
+  border: none;
+  font-size: 14px;
+  outline: none;
+  background-color: transparent;
+  color: #fff;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.headerListItem:hover {
+background-color: #1A4FA0;
+}
+
+.headerListItem.active{
+    border: 1px solid #fff;
+    background-color: #1A4FA0;
+}
+
+.headerTitle{
+    font-size: 55px;
+}
+
+.headerDesc{
+    font-size: 26px;
+}
+
+.headerSearch{
+    width: 70%;
+    height: 60px;
+    background-color: #fff;
+    border: 6px solid #FFB700;
+    border-radius: 10px;
+    padding: 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    bottom: -10%;
+
+
+}
+
+.headerSearchItem{
+    flex: 1;
+    border: 3px solid #FFB700;
+    color: #000;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.headerSearchBtn{
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: #fff;
+    background-color: #006CE4;
+    flex: 0.5;
+    border: 3px solid #FFB700;
+    padding: 15px;
+    cursor: pointer;
+}
+
+.headerSearchBtn:hover{
+    background-color: #1A4FA0;
+}
+
+.headerSearchInput{
+    padding: 0;
+    margin: 0;
+    outline: none;
+    border: none;
+}
+
+.dateRange{
+    position: absolute;
+    top: 58px;
+    left: 28%;
+}
+
+.headerSearchText{
+    color: grey;
+}
+
+.options{
+    position: absolute;
+    top: 58px;
+    left: 57%;
+    color: #000;
+    background-color: #fff;
+    box-shadow: 1px 1px 10px  rgba(0,0,0,.8);
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.optionsItem{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 7px 0;
+}
+
+.optionText{
+    margin-right: 35px;
+    padding-left: 10px;
+}
+
+.optionButtons{
+    border: 1px solid grey;
+    padding: 4px;
+    border-radius: 4px;
+}
+
+.personsCount{
+    margin: 8px;
+}
