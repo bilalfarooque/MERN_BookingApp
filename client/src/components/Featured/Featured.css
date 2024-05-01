@@ -1,0 +1,27 @@
+.featured {
+    width: 1024px;
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    z-index: 1;
+    position: relative;
+}
+
+.featuredImg{
+    width: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.featuredTitles{
+    position: absolute;
+    bottom: 10px;
+    margin-left: 5px;
+}
+
+.featuredTitles h2{
+    color: #fff;
+    font-size: 18px;
+    
+}

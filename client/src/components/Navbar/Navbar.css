@@ -35,4 +35,10 @@
   outline: none;
   border-radius: 5px;
   background-color: #fff;
+  cursor: pointer;
+}
+
+
+.navButton:hover{
+  filter: brightness(85%);
 }

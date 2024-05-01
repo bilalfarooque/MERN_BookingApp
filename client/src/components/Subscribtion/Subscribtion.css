@@ -1,0 +1,54 @@
+.subscription{
+    width: 100%;
+    background-color: #00224F;
+    color: #fff;
+    height: 40vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    
+}
+
+.subsCont{
+    padding-top: 30px;
+    width: 100%;
+    max-width: 1024px;
+    text-align: center;
+    
+}
+
+.mailTitle{
+    letter-spacing: 0.04em;
+    font-size: 26px;
+    font-weight: 400;
+}
+.mailDesc{
+    color: grey;
+}
+
+.mailInputCont{
+    margin-top: 20px;
+    display: flex;
+    gap: 5px;
+}
+
+.mailInput{
+    padding: 10px;
+    width: 400px;
+    font-size: 22px;
+    border-radius: 5px;
+    outline: none;
+    
+}
+
+.mailSignUpBtn{
+    font-size: 22px;
+    border: none;
+    outline: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    background-color:#006CE4;
+    cursor: pointer;
+    transition: all .3s ease;
+    color: #fff;
+}

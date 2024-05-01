@@ -1,0 +1,96 @@
+.listContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.listWrapper {
+  width: 100%;
+  max-width: 1024px;
+  display: flex;
+  gap: 20px;
+}
+
+.listSearch {
+  flex: 1;
+  padding: 5px;
+  background-color: #ffb700;
+  color: #fff;
+  border-radius: 10px;
+  position: sticky;
+  top: 10px;
+  border: 1px solid grey;
+  height: max-content;
+}
+
+.listItem {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+.listItem label {
+  font-size: 14px;
+}
+
+.listItem input {
+  cursor: pointer;
+  height: 36px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+.headerSearchText {
+  height: 36px;
+  padding: 5px 10px;
+  background-color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.listTitle {
+  font-size: 24px;
+}
+
+.dateRange {
+  border: 2px solid #dcdfe6;
+  border-radius: 5px;
+}
+
+.listOptionItem {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.listOptionInput {
+  width: 70px;
+}
+
+.listItems {
+  padding: 15px;
+  margin-bottom: 15px;
+}
+
+.listSearchBtn {
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: #fff;
+  background-color: #006ce4;
+  width: 120px;
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+  margin: auto;
+  border-radius: 10px;
+}
+
+.listResult {
+  flex: 3;
+}

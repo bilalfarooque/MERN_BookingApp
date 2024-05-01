@@ -1,0 +1,115 @@
+.searchItem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid grey;
+  border-radius: 4px;
+  gap: 10px;
+  padding: 5px;
+  margin-bottom: 10px;
+  height: 12%;
+  cursor: pointer;
+}
+
+.siImg {
+  flex: 1;
+  max-width: 25%;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6);
+}
+
+.siDesc {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  justify-content: space-around;
+  text-align: left;
+}
+
+.siTitle {
+  color: #006ce4;
+  font-size: 20px;
+}
+
+.siTaxiOP {
+  color: #fff;
+  background-color: #008234;
+  border-radius: 4px;
+  padding: 3px;
+  width: max-content;
+  padding: 3px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.siSubtitle {
+  color: rgb(54, 54, 54);
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  font-weight: 800;
+}
+
+.CancelOp {
+  color: #008234;
+  font-weight: 700;
+}
+
+.siCancelOpSubstitle {
+  color: #008234;
+}
+
+.siDetails {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.siRating{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.rate{
+    background-color: #003b95;
+    padding: 5px;
+    color: #fff;
+    border-radius: 5px;
+}
+.raText{
+    font-weight: 700;
+}
+
+.siDetailTexts{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: right;
+}
+
+.siCheck{
+    width: max-content;
+    padding: 5px 10px;
+    background-color: #006ce4;
+    border: none;
+    outline: none;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 18px;
+    margin-top: 8px;
+    cursor: pointer;
+}
+
+.siPrice{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.siTaxOp{
+    font-size: 10px;
+    color: grey;
+}
