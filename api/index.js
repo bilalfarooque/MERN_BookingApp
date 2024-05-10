@@ -3,11 +3,15 @@ import mongoose from "mongoose"
 import dotenv from "dotenv"
 import cors from "cors"
 import morgan from "morgan"
+import cookieParser from "cookie-parser"
 
 // import helmet from "helmet"
 import { dbConnection } from "./utils/config.js"
 
 import hotelRouter from "./routes/hotels.js"
+import authRouter from "./routes/auth.js"
+import userRouter from "./routes/users.js"
+import roomRouter from "./routes/rooms.js"
 
 
 dotenv.config()
@@ -31,9 +35,12 @@ app.use(express.json())
 // app.use(helmet())
 app.use(morgan('dev'))
 
+app.use(cookieParser())
+
+app.use("/api/auth",authRouter)
+app.use("/api/users",userRouter)
 app.use("/api/hotels",hotelRouter)
-// app.use("/api/auth",authRouter)
-// app.use("/api/users",userRouter)
+app.use("/api/rooms",roomRouter)
 
 app.use((err,req,res,next)=>{
     const errStatus = err.status || 500
