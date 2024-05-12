@@ -1,6 +1,8 @@
 import express  from "express";
-import { createHotelController, deleteHotelController, getHotelController, getHotelsController, updateHotelController } from "../controllers/hotelController.js";
+import { createHotelController, deleteHotelController,getHotelController, getHotelsController, getHotelscountByCity, getHotelscountByType, updateHotelController } from "../controllers/hotelController.js";
 import { verifyAdmin } from "../utils/verifyToken.js";
+
+
 
 //user API
 const hotelRouter = express.Router()
@@ -12,9 +14,13 @@ hotelRouter.put("/:id",verifyAdmin, updateHotelController)
 //delete a hotel
 hotelRouter.delete("/:id",verifyAdmin, deleteHotelController)
 //get a hotel
-hotelRouter.get("/:id", getHotelController)
+hotelRouter.get("/single/:id", getHotelController)
 //get all hotels
 hotelRouter.get("/", getHotelsController)
+//get hotels by city
+hotelRouter.get("/countByCity", getHotelscountByCity)
+//get hotels by type
+hotelRouter.get("/countByType", getHotelscountByType)
 
 
 export default hotelRouter
