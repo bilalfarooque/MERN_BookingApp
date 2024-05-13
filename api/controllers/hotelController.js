@@ -39,11 +39,7 @@ export const updateHotelController = async (req, res, next) => {
     }
 
     // If the hotel is found and updated, return a success response
-    res.status(200).json({
-      status: true,
-      message: "Hotel Updated Successfully",
-      data: updatedHotel,
-    });
+    res.status(200).json(updatedHotel);
   } catch (error) {
     next(error);
   }
@@ -86,11 +82,7 @@ export const getHotelController = async (req, res, next) => {
       });
     }
 
-    res.status(200).json({
-      status: true,
-      message: "Hotel found Successfully",
-      data: getHotel,
-    });
+    res.status(200).json(getHotel)
   } catch (error) {
     next(error);
   }
@@ -98,12 +90,16 @@ export const getHotelController = async (req, res, next) => {
 
 //get all hotels
 export const getHotelsController = async (req, res, next) => {
+  const { min, max, limit, ...others } = req.query;
   try {
-    const getHotels = await Hotel.find();
+    const query = { ...others };
+    if (min !== undefined && max !== undefined) {
+      query.cheapestPrice = { $gt: +min, $lt: +max };
+    }
+    const limitNum = +limit || 10; // Default to 10 if limit is not provided or invalid
+    const getHotels = await Hotel.find(query).limit(limitNum);
 
-    console.log("getHotels==> ", getHotels);
-
-    if (!getHotels) {
+    if (getHotels.length == 0) {
       // If no hotel is found, return a 404 status
       return res.status(404).json({
         status: false,
@@ -111,11 +107,7 @@ export const getHotelsController = async (req, res, next) => {
       });
     }
 
-    res.status(200).json({
-      status: true,
-      message: "Hotels data found Successfully",
-      data: getHotels,
-    });
+    res.status(200).json(getHotels);
   } catch (error) {
     next(error);
   }

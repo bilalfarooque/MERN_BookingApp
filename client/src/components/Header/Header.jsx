@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./Header.css";
 import HotelIcon from "@mui/icons-material/Hotel";
 import ConnectingAirportsIcon from "@mui/icons-material/ConnectingAirports";
@@ -14,6 +14,7 @@ import "react-date-range/dist/theme/default.css"; // theme css file
 import { format } from "date-fns";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { SearchContext } from "../../context/SearchContext";
 
 export default function Header({ type }) {
   //destination
@@ -23,7 +24,7 @@ export default function Header({ type }) {
 
   //date
   const [showDate, setShowDate] = useState(false);
-  const [date, setDate] = useState([
+  const [dates, setDates] = useState([
     {
       startDate: new Date(),
       endDate: new Date(),
@@ -41,9 +42,12 @@ export default function Header({ type }) {
 
   const navigate = useNavigate();
 
+  const {dispatch} = useContext(SearchContext)
+
   //function
   const handleSearch = () => {
-    navigate("/hotels", {state : {destination,date,persons}})
+    dispatch({ type: "NEW_SEARCH", payload: { destination, dates, persons } })
+    navigate("/hotels", {state : {destination,dates,persons}})
   };
 
   //function
@@ -109,16 +113,16 @@ export default function Header({ type }) {
                       setShowPersons(false);
                     }}
                     className="headerSearchText"
-                  >{`${format(date[0].startDate, "dd/MM/yyyy")} to ${format(
-                    date[0].endDate,
+                  >{`${format(dates[0].startDate, "dd/MM/yyyy")} to ${format(
+                    dates[0].endDate,
                     "dd/MM/yyyy"
                   )}`}</span>
                   {showDate && (
                     <DateRange
                       editableDateInputs={true}
-                      onChange={(item) => setDate([item.selection])}
+                      onChange={(item) => setDates([item.selection])}
                       moveRangeOnFirstSelection={false}
-                      ranges={date}
+                      ranges={dates}
                       className="dateRange"
                     />
                   )}

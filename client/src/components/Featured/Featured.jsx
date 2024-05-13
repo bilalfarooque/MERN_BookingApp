@@ -14,6 +14,8 @@ export default function Featured() {
 
   console.log("featured data=>", data);
 
+  
+
   return (
     <>
       <div className="featured">

@@ -1,6 +1,8 @@
 import User from "../models/User.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import { createError } from '../utils/error.js'
+
 
 // signup Or register
 export const registerController = async (req, res, next) => {
@@ -42,16 +44,16 @@ export const registerController = async (req, res, next) => {
 export const loginController = async (req, res, next) => {
   try {
     //check missing fields
-    if (!req.body.email || !req.body.password)
-      return res.status(404).json({
-        status: false,
-        message: "Missing Fields",
-      });
+    // if (!req.body.email || !req.body.password)
+    //   return res.status(404).json({
+    //     status: false,
+    //     message: "Missing Fields",
+    //   });
 
-    const user = await User.findOne({ email: req.body.email });
+    const user = await User.findOne({ username: req.body.username });
     console.log("====>>> user data", user);
 
-    if (!user) return next(createError(404, "User not founded"));
+    if (!user) return next(createError(404, "User not found"));
     //decrypt password to check and match
     const validPass = await bcrypt.compare(req.body.password, user.password);
     console.log("validPass >>>", validPass);
@@ -70,7 +72,7 @@ export const loginController = async (req, res, next) => {
       .json({
         status: true,
         message: "Login Successful",
-        data: { ...otherDetails },
+        data: ({ details: { ...otherDetails }, isAdmin })
       });
   } catch (error) {
     next(error);
