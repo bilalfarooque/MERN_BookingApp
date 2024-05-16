@@ -1,4 +1,5 @@
 import Hotel from "../models/Hotel.js";
+import Room from "../models/Rooms.js";
 
 //create
 export const createHotelController = async (req, res, next) => {
@@ -82,7 +83,7 @@ export const getHotelController = async (req, res, next) => {
       });
     }
 
-    res.status(200).json(getHotel)
+    res.status(200).json(getHotel);
   } catch (error) {
     next(error);
   }
@@ -157,5 +158,26 @@ export const getHotelscountByType = async (req, res, next) => {
     ]);
   } catch (error) {
     next(error);
+  }
+};
+
+export const getHotelRooms = async (req, res, next) => {
+  try {
+    const hotel = await Hotel.findById(req.params.id);
+    console.log("hotelID", hotel);
+
+    // Filter out any undefined or null room IDs before mapping over the array
+    const validRoomIds = hotel.rooms.filter(
+      (roomId) => roomId !== null && roomId !== undefined
+    );
+    const list = await Promise.all(
+      validRoomIds.map((roomId) => {
+        return Room.findById(roomId);
+      })
+    );
+
+    res.status(200).json(list);
+  } catch (err) {
+    next(err);
   }
 };

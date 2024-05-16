@@ -31,8 +31,9 @@ const Login = () => {
   };
   return (
     <>
-      <Navbar />
+      <Navbar type={"login"} />
       <div className="login">
+        <div className="rContainer"></div>
         <div className="lContainer">
           <h2>Login to Continue</h2>
           <input

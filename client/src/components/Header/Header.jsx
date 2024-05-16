@@ -19,9 +19,7 @@ import { SearchContext } from "../../context/SearchContext";
 export default function Header({ type }) {
   //destination
   const [destination, setDestination] = useState("")
-
-
-
+  
   //date
   const [showDate, setShowDate] = useState(false);
   const [dates, setDates] = useState([

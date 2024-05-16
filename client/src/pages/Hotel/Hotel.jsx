@@ -13,6 +13,8 @@ import { sliderClasses } from "@mui/material";
 import useFetch from "../../hooks/useFetch";
 import { useLocation, useNavigate } from "react-router-dom";
 import { SearchContext } from "../../context/SearchContext";
+import { AuthContext } from "../../context/AuthContext";
+import Reserve from "../../components/Reserve/Reserve";
 
 export default function Hotel() {
   const location = useLocation();
@@ -23,12 +25,15 @@ export default function Hotel() {
 
   const [slideIndex, setSlideIndex] = useState(0);
   const [openSlider, setOpenSlider] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
 
   const { data, loading, error } = useFetch(`/api/hotels/single/${id}`);
 
   // console.log("Hoteldata",data);
 
   const { dates, persons } = useContext(SearchContext);
+  const { user } = useContext(AuthContext);
+
 
   console.log("dates=>>", dates);
 
@@ -58,6 +63,10 @@ export default function Hotel() {
       setSlideIndex(slideIndex === photos.length - 1 ? 0 : (prev) => prev + 1);
     }
   };
+
+  const handleResBtn = ()=>{
+    !user ? navigate("/login") : setOpenModal(true);
+  }
 
   return (
     <>
@@ -91,7 +100,7 @@ export default function Hotel() {
                 />
               </div>
             )}
-            <button className="reserveBtn">Reserve</button>
+            <button className="reserveBtn" onClick={handleResBtn}>Reserve</button>
             <h1 className="hotelTitle">{data?.name}</h1>
             <div className="hotelAddress">
               <a href="">
@@ -129,7 +138,7 @@ export default function Hotel() {
                   <br />
                   <strong>Monthly</strong> Rate: Rs {30 * data.cheapestPrice * persons.room}
                 </span>
-                <button className="priceBtn">Reserve or Book Now</button>
+                <button className="priceBtn" onClick={handleResBtn}>Reserve or Book Now</button>
               </div>
             </div>
           </div>
@@ -137,6 +146,7 @@ export default function Hotel() {
       )}
       <Subscribtion />
       <Footer />
+      {openModal && <Reserve setOpen={setOpenModal} hotelId={id} />}
     </>
   );
 }

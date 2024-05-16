@@ -10,7 +10,8 @@ import useFetch from "../../hooks/useFetch.js";
 
 export default function List() {
   const location = useLocation();
-  console.log(location);
+  console.log("location=>>>", location);
+  console.log(location.state.dates)
 
   const [destination, setDestination] = useState(location.state.destination);
   const [dates, setDates] = useState(location.state.dates);
