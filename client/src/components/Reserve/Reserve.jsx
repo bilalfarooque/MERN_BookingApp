@@ -35,6 +35,11 @@ const Reserve = ({ setOpen, hotelId }) => {
     while (start <= end) {
       date.push(start.getTime());
       start.setDate(start.getDate() + 1);
+      //setDate(date: number): number;
+    /**
+     * Sets the numeric day of the month in the Date object using Universal Coordinated Time (UTC).
+     * @param date A numeric value equal to the day of the month.
+     */
     }
     
     return date;
@@ -54,19 +59,23 @@ const Reserve = ({ setOpen, hotelId }) => {
     //true/False
   };
 
+  console.log("isAvailable=>",isAvailable);
 
   const handleClick = async () => {
     try {
       await Promise.all(
         selectedRooms.map((roomId) => {
-          const updateDates = allDates.map((date) => {
-            const country = new Date(date);
-            country.setHours(country.getHours() + 5);
-            return country;
+
+          // const updateDates = allDates.map((date) => {
+          //   const country = new Date(date);
+          //   country.setHours(country.getHours() + 5);
+          //   return country;
+          // });
+
+          const res = axios.put(`/api/rooms/availability/${roomId}`, {
+            dates: allDates,
           });
-          const res = axios.put(`/api/room/availability/${roomId}`, {
-            dates: updateDates,
-          });
+          
           return res.data;
         })
       );
@@ -77,7 +86,7 @@ const Reserve = ({ setOpen, hotelId }) => {
     }
   };
 
-  
+
   return (
     <div className="reserve">
       <div className="rContainer">

@@ -54,6 +54,25 @@ export const updateRoomController = async (req, res) => {
       next(err);
     }
   };
+
+  //updateRoomAvailController
+//update
+export const updateRoomAvailController = async (req, res) => {
+  try {
+    await Room.updateOne({"roomNumbers._id": req.params.id},{
+      $push :{
+        "roomNumbers.$.unavailableDates": req.body.dates
+      }
+    })
+
+
+    // If the Room is found and updated, return a success response
+    res.status(200).json({message:"updated"})
+  } catch (err) {
+    next(err);
+  }
+};
+
   
   //delete
   export const deleteRoomController = async (req, res) => {

@@ -7,7 +7,7 @@ import fpimg4 from "../../images/fp/fp4.webp";
 import useFetch from "../../hooks/useFetch.js";
 
 export default function FeaturedProperties() {
-  const { data, loading, error } = useFetch("/api/hotels?featured=true&limit=4");
+  const { data, loading, error } = useFetch("/api/hotels?featured=true&limit=2");
   console.log("featuredproperty data==>",data)
   return (
     <>
