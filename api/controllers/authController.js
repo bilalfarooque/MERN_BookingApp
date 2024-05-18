@@ -1,8 +1,7 @@
 import User from "../models/User.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import { createError } from '../utils/error.js'
-
+import { createError } from "../utils/error.js";
 
 // signup Or register
 export const registerController = async (req, res, next) => {
@@ -23,8 +22,7 @@ export const registerController = async (req, res, next) => {
     const hashPassword = await bcrypt.hashSync(password, salt);
 
     const newUser = new User({
-      username: username,
-      email: email,
+      ...req.body,
       password: hashPassword,
     });
 
@@ -72,7 +70,7 @@ export const loginController = async (req, res, next) => {
       .json({
         status: true,
         message: "Login Successful",
-        data: ({ details: { ...otherDetails }, isAdmin })
+        data: { details: { ...otherDetails }, isAdmin },
       });
   } catch (error) {
     next(error);
