@@ -2,7 +2,7 @@ import express  from "express";
 import { createRoomController, deleteRoomController, getRoomController, getRoomsController, updateRoomAvailController, updateRoomController } from "../controllers/roomController.js";
 import { verifyAdmin } from "../utils/verifyToken.js";
 
-//user API
+//rooms API
 const roomRouter = express.Router()
 
 //create a Room

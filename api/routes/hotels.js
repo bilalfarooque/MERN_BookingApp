@@ -4,7 +4,7 @@ import { verifyAdmin } from "../utils/verifyToken.js";
 
 
 
-//user API
+//hotel API
 const hotelRouter = express.Router()
 
 //create a hotel

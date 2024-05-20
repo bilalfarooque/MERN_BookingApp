@@ -5,15 +5,17 @@ import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import useFetch from '../../hooks/useFetch'
 import axios from "axios";
+
 const Datatable = ({ columns }) => {
   const location = useLocation()
   const path = location.pathname.split('/')[1]
+  console.log("path=>",path)
   const [list, setList] = useState([])
   const { data, loading, error, reFetch } = useFetch(`/api/${path}`)
 
   useEffect(() => {
-    setList(data)
-    console.log(data)
+    setList(data.data)
+    console.log("data=>",data)
   }, [data])
 
   const handleDelete = async (id) => {
@@ -21,7 +23,7 @@ const Datatable = ({ columns }) => {
       await axios.delete(`/api/${path}/${id}`)
       setList(list.filter(item => item._id !== id))
     } catch (error) {
-
+      console.log("error=>",error);
     }
 
   };

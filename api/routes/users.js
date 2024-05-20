@@ -2,7 +2,7 @@ import express  from "express";
 import { createUserController, deleteUserController, getUserController, getUsersController, updateUserController } from "../controllers/userController.js";
 import { verifyAdmin, verifyToken, verifyUser } from "../utils/verifyToken.js";
 
-//user API
+//users API
 const userRouter = express.Router()
 
 userRouter.get("/checkToken", verifyToken, (req, res, next)=>{

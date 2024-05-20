@@ -9,12 +9,12 @@ import {
   Routes,
   Navigate
 } from 'react-router-dom';
-import { userInputs } from "./formSource";
+import { userInputs } from "./formSource.jsx";
 import "./style/dark.scss";
 import { useContext } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
 import { AuthContext } from "./context/AuthContext";
-import { hotelColumns, roomsColumns, userColumns } from "./datatablesource";
+import { hotelColumns, roomsColumns, userColumns } from "./datatablesource.jsx";
 import NewHotel from "./pages/newHotel/NewHotel";
 import NewRoom from "./pages/newRoom/NewRoom";
 
@@ -38,7 +38,7 @@ function App() {
               <Home />
             </ProtectedRoutes>} />
           {/* User */}
-          <Route path="user">
+          <Route path="users">
             <Route index element={
               <ProtectedRoutes>
                 <List columns={userColumns}/>
@@ -59,7 +59,7 @@ function App() {
             />
           </Route>
           {/* Products */}
-          <Route path="hotel">
+          <Route path="hotels">
             <Route index element={
               <ProtectedRoutes>
                 <List columns={hotelColumns}/>
@@ -80,7 +80,7 @@ function App() {
             />
           </Route>
           {/* Rooms */}
-          <Route path="room">
+          <Route path="rooms">
             <Route index element={
               <ProtectedRoutes>
                 <List columns={roomsColumns}/>

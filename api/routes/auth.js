@@ -1,7 +1,7 @@
 import express from "express";
 import { loginController, registerController } from  '../controllers/authController.js';
 
-//user register API
+//auth register API
 
 const authRouter = express.Router()
 
